@@ -39,10 +39,13 @@ class BaseLoader:
 class Loader(BaseLoader):
 
     def parse(self):
+
         self.N = self._loadIntegers()[0]
-        self.photos = self._readlines(self.N)
+        self.photos = self._readlinesAndSplit(self.N)
+        self.photos = list(map(
+            lambda x: [x[0], x[1], x[2:2+int(x[1])]], self.photos)
+        )
 
         
-    
 #example = Loader("files/a_example.in")
 #print(example.tm)
