@@ -47,6 +47,23 @@ class Loader(BaseLoader):
         )
         #self.photos = self._toNumpyArray(self.photos, [('type', str), ('tag_count', int), ('tags', list)])
 
+class Writer:
+
+    def __init__(self, filename):
+        self.file = open(filename, "w+")
+
+    def writeSlidesLength(self, length):
+        self.file.write(str(length)+"\n")
+    
+    def writeVerticalsAndHorizontals(self, verticals, horizontals):
+        for v in verticals:
+            self.file.write(str(v[0])+" "+str(v[1])+"\n")
+        for h in horizontals:
+            self.file.write(str(h)+"\n")
+
+    def close(self):
+        self.file.close()
+
         
 #example = Loader("files/a_example.in")
 #print(example.tm)
