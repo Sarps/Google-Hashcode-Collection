@@ -1,7 +1,8 @@
 from FileHelper import Loader
-from numpy import np
+import numpy as np
 
-example = Loader("a_example.txt")
+e = Loader("a_example.txt")
 
-print()
-max(elements, key=lambda e: int(e[0]))
+print(e.photos[:,1])
+print(e.photos[1])
+#max(elements, key=lambda e: int(e[0]))

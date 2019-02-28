@@ -1,5 +1,7 @@
+
 from FileHelper import Loader
 
+example = Loader("a_example.txt")
 
-#example = Loader("files/a_example.in")
-#print(example.tm)
+print(example.N)
+print(example.photos)

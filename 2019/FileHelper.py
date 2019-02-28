@@ -43,7 +43,7 @@ class Loader(BaseLoader):
         self.N = self._loadIntegers()[0]
         self.photos = self._readlinesAndSplit(self.N)
         self.photos = list(map(
-            lambda x: [x[0], x[1], x[2:2+int(x[1])]], self.photos)
+            lambda x: [x[0], int(x[1]), x[2:2+int(x[1])]], self.photos)
         )
         #self.photos = self._toNumpyArray(self.photos, [('type', str), ('tag_count', int), ('tags', list)])
 
