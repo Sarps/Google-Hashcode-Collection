@@ -13,6 +13,9 @@ class BaseLoader:
     def _readlines(self, n):
         return list(map(lambda x: self._readline(), range(n)))
 
+    def _readlinesAndSplit(self, n):
+        return list(map(lambda x: self._readline().split(), range(n)))
+
     def _loadIntegers(self):
         return list(map(lambda x: int(x), self._readline().split()))
 
@@ -36,8 +39,8 @@ class BaseLoader:
 class Loader(BaseLoader):
 
     def parse(self):
-        self.r, self.c, self.f, self.n, self.b, _ = self._loadIntegers()
-        self.tm = self._toNumpyArray( self._loadIntegerMatrix(self.r) )
+        self.N = self._loadIntegers()[0]
+        self.photos = self._readlines(self.N)
 
         
     
