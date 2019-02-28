@@ -1,0 +1,45 @@
+import numpy as np
+
+class BaseLoader:
+
+    def __init__(self,  filename):
+        self.file = open(filename, "r")
+        self.parse()
+        self.close()
+
+    def _readline(self):
+        return self.file.readline().rstrip('\n')
+
+    def _readlines(self, n):
+        return list(map(lambda x: self._readline(), range(n)))
+
+    def _loadIntegers(self):
+        return list(map(lambda x: int(x), self._readline().split()))
+
+    def _loadIntegerMatrix(self, rows):
+        return list(map(
+            lambda x: list(map(lambda y: int(y), self._readline().split())), 
+            range(rows)
+        ))
+
+    def _toNumpyArray(self, data, dtype=str):
+        return np.array(data, dtype=dtype)
+        
+
+    def parse(self):
+        pass
+
+    def close(self):
+        self.file.close()
+
+
+class Loader(BaseLoader):
+
+    def parse(self):
+        self.r, self.c, self.f, self.n, self.b, _ = self._loadIntegers()
+        self.tm = self._toNumpyArray( self._loadIntegerMatrix(self.r) )
+
+        
+    
+#example = Loader("files/a_example.in")
+#print(example.tm)
