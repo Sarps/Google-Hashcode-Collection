@@ -45,6 +45,7 @@ class Loader(BaseLoader):
         self.photos = list(map(
             lambda x: [x[0], x[1], x[2:2+int(x[1])]], self.photos)
         )
+        #self.photos = self._toNumpyArray(self.photos, [('type', str), ('tag_count', int), ('tags', list)])
 
         
 #example = Loader("files/a_example.in")
